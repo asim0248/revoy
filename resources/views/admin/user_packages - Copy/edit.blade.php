@@ -1,0 +1,112 @@
+@extends('admin.layouts.dashboard')
+@section('content')
+<!-- BEGIN PAGE HEADER-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+        <h3 class="page-title">
+            Invoices 
+        </h3>
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="<?= URL::to('admin/dashboard') ?>">
+                    Home
+                </a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+
+                <a href="<?= URL::to('admin/agents') ?>">
+                    Agents
+                </a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+
+                <a href="<?= URL::to('admin/agents/packages/'.md5($data['id'])) ?>">
+                   <?=$data['name']?> Invoice
+                </a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">
+                    Edit
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    Edit <?=$data['name']?> Invoice
+                </div>
+
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="<?= URL::to('admin/agents/editpackage_save') ?>" method="post" name="form_data" id="form_data"  class="form-horizontal" enctype="multipart/form-data" onsubmit="return create_product_package();">
+					<input type="hidden" id="_token" name="_token" value="<?=csrf_token()?>">
+                    <input type="hidden" id="user_id" name="user_id" value="<?=$data['id']?>">
+                    <input type="hidden" id="id" name="id" value="<?=$data_package['id']?>">
+                    
+                    <div class="form-body">
+                        <div id="id_alert" class="alert alert-danger display-hide ">
+                            <span id="res_msg"></span>
+                        </div>
+                        
+                        
+                        <div class="form-group"     >
+                            <label class="col-md-3 control-label">Invoice <span class="required">*</span></label>
+                            <div class="col-md-4">
+                                <select class="form-control"   name="package_id" id="package_id">
+                                <?php foreach ($result_plans as $row) { ?>
+                                <option value="<?=$row['id']?>" <?=($data_package['package_id']==$row['id'])?'selected':''?>><?=$row['name']?></option>
+                                <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                       <div class="form-group">
+                            <label class="col-md-3 control-label">Start Date </label>
+                            <div class="col-md-4">
+                            	
+                                <input type="date" class="form-control" id="start_date" name="start_date" value="<?= $data_package['start_date'] ?>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">End Date </label>
+                            <div class="col-md-4">
+                            	
+                                <input type="date" class="form-control" id="end_date" name="end_date" value="<?= $data_package['end_date'] ?>">
+                            </div>
+                        </div>
+                        
+                        
+                     </div>
+                    <div class="form-actions fluid">
+                        <div class="col-md-offset-3 col-md-9">
+                            <span class="display-hide" id="id_loading_process"></span>
+                            <button type="submit" class="btn green"  name="id_btn_submit" id="id_btn_submit"><i class="fa fa-check"></i> Submit</button>
+                            <a href="<?= URL::to('admin/agents/packages/'.md5($data['id'])) ?>"><button type="button" class="btn default"  > Cancel</button></a>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+$('#id_upload').click(function(){
+$('#package').trigger('click');
+})
+</script>
+@stop

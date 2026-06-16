@@ -1,0 +1,50 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+	
+	 <FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+   </FilesMatch>
+
+   <IfModule mod_headers.c>
+    Header add Access-Control-Allow-Origin "https://www.revoy.com.au"
+    Header add Access-Control-Allow-Methods: "GET,POST"
+    </IfModule>
+
+    <IfModule mod_headers.c>
+    SetEnvIf Referer "^https://mail\.google\.com" gmail_ref
+    Header set Access-Control-Allow-Origin "https://mail.google.com" env=gmail_ref
+    Header set Access-Control-Allow-Methods "GET,POST,OPTIONS"
+</IfModule>
+
+    RewriteEngine On
+
+	RewriteCond %{HTTPS} off [OR]
+
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+
+RewriteRule (.*) https://www.revoy.com.au%{REQUEST_URI} [R=301,L]
+	
+	RewriteCond     %{SERVER_PORT} ^80$
+	RewriteRule     ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit

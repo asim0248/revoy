@@ -1,0 +1,133 @@
+@extends('layouts.master')
+
+
+
+@section('customstyle')
+
+
+
+
+
+
+
+@stop
+
+
+
+
+
+
+
+@section('header')
+
+
+
+@include('partial.header_inner')
+
+
+
+@stop
+
+
+
+@section('content')
+
+<?php 
+
+$features = array();
+if($cms_dp['features']!=''){
+$features = explode(',',$cms_dp['features']);
+}
+
+?>
+
+ <div class="agent-hero list-pack-hero">
+            <div class="container">
+                <div class="agent-hero-main">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="agnt-lft-main">
+                                <div class="agent-left">
+                                    
+                                    <?php if($cms_dp['image']!="") {?>
+                              		 <img src="<?= url('/') . '/public/upload/plans/' . $cms_dp['image'] ?>"  />
+                                	<?php } ?>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <!--Basic Plan-->
+                            <div class="plan">
+                                <div class="utf-plan-price basic">
+                                    <h3><?= $cms_dp['name'] ?></h3>
+                                     <span class="value"><?=App\Model\Common::priceFormat($cms_dp['plan_price']) ?><sub> /<?= $cms_dp['price_per'] ?></sub></span> <span class="period"><?= $cms_dp['tag_line'] ?></span> 
+                                </div>
+                                <div class="utf-plan-features">
+                                	<?php if(count($features)>0){?>
+                                    <ul>
+                                    	<?php foreach($features as $row_f){?>
+                                        <li>
+                                            <div class="list-pack-check">
+                                                <i class="fa-solid fa-check"></i>
+                                            </div>
+                                            <div class="list-pack-text">
+                                                <p>
+                                                    <i class="fa-solid fa-arrow-down"></i> <?=$row_f?>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <?php } ?>
+                                    </ul>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+
+    
+
+  @section('footer')
+
+
+
+@include('partial.footer')
+
+
+
+@stop   
+
+
+
+
+
+
+
+@stop
+
+
+
+
+
+
+
+@section('customscript')
+
+
+
+
+
+
+
+@stop
+
+
+
+
+
+
+
