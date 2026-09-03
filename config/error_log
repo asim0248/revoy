@@ -1,0 +1,32 @@
+[26-Dec-2025 17:07:06 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/database.php on line 18
+[26-Dec-2025 17:07:06 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/mail.php on line 16
+[26-Dec-2025 17:07:06 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/app.php on line 16
+[26-Dec-2025 17:07:06 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/services.php on line 18
+[30-Mar-2026 08:56:45 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/app.php on line 16
+[30-Mar-2026 08:56:45 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/services.php on line 18
+[08-May-2026 06:54:04 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/services.php on line 18
+[08-May-2026 06:54:04 Australia/Sydney] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/revoycom/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/revoycom/public_html/config/database.php on line 18
